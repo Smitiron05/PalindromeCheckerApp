@@ -1,20 +1,18 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        // 1. Define the input string to validate
-        String input = "civic";
+        String input = "refer";
         System.out.println("Input : " + input);
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> deque = new ArrayDeque<>();
         for (char c : input.toCharArray()) {
-            queue.add(c);   // Enqueue operation
-            stack.push(c);  // Push operation
+            deque.addLast(c);
         }
         boolean isPalindrome = true;
-        while (!queue.isEmpty()) {
-            if (!queue.remove().equals(stack.pop())) {
+        while (deque.size() > 1) {
+            Character front = deque.removeFirst();
+            Character rear = deque.removeLast();
+            if (!front.equals(rear)) {
                 isPalindrome = false;
                 break;
             }
