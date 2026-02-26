@@ -1,20 +1,18 @@
-import java.util.LinkedList;
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String input = "level";
+        String input = "madam";
         System.out.println("Input : " + input);
-        LinkedList<Character> list = new LinkedList<>();
-        for (char c : input.toCharArray()) {
-            list.add(c);
-        }
-        boolean isPalindrome = true;
-        int size = list.size();
-        for (int i = 0; i < size / 2; i++) {
-            if (!list.get(i).equals(list.get(size - 1 - i))) {
-                isPalindrome = false;
-                break;
-            }
-        }
+        boolean isPalindrome = check(input, 0, input.length() - 1);
         System.out.println("Is Palindrome? : " + isPalindrome);
+    }
+    private static boolean check(String s, int start, int end) {
+        if (start >= end) {
+            return true;
+        }
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
+        }
+
+        return check(s, start + 1, end - 1);
     }
 }
